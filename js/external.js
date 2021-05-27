@@ -1,3 +1,8 @@
+"use strict";
+
+console.log("Hello world");
+
+
 function shout(message) {
     alert(message.toUpperCase((Welcome to my Website!) + "!!!");
 }
