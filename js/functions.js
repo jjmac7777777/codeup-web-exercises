@@ -9,6 +9,10 @@
  * > sayHello("codeup") // returns "Hello, codeup!"
  */
 
+function sayHello(name) {
+    return "Hello, " + name;
+}
+
 /**
  * TODO:
  * Call the function 'sayHello' and pass your name as a string literal argument.
@@ -17,6 +21,14 @@
  * console.log 'helloMessage' to check your work
  */
 
+var name = "Winterfell";
+var helloMessage = sayHello("Jack");
+
+console.log(helloMessage);
+alert(message);
+
+
+
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
@@ -24,27 +36,28 @@
  * console.
  */
 
-// Don't modify the following line, it generates a random number between 1 and 3
-// and stores it in a variable named random
-var random = Math.floor((Math.random() * 3) + 1);
+function isTwo {
+}
+    var random = Math.floor((Math.random() * 3) + 1);
 
-/**
- * TODO:
+
+/**TODO:
  * Create a function called 'isTwo' that takes a number as a parameter.
  * The function should return a boolean value based on whether or not the passed
  * number is the number 2.
- *
- * Example
- * > isTwo(1) // returns false
- * > isTwo(2) // returns true
- * > isTwo(3) // returns false
+ **/
+
+    isTwo(1) // returns false
+    isTwo(2) // returns true
+    isTwo(3) // returns false
+
  *
  * Call the function 'isTwo' passing the variable 'random' as a argument.
  *
  * console.log *outside of the function* to check your work (you should see a
  * different result everytime you refresh the page if you are using the random
  * number)
- */
+
 
 /**
  * TODO:
