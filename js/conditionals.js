@@ -28,15 +28,14 @@ function analyzeColor(colorName) {
     if (colorName === "red") {
         return "Strawberries are red";
 
-    } else (colorName === "cyan") {
+    } else if (colorName === "cyan") {
         return " I don't know anything about cyan";
     }
-       else {
-        return " I don't know anything about cyan  " + colorName;
-    }
+
+        return " I don't know anything about  " + colorName;
 }
 
-
+console.log(analyzeColor('blue'));
 
 
 // Don't change the next two lines!
@@ -112,3 +111,25 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+
+alert("This is alert box!");  // display string message
+alert(100); // display number
+alert(true); // display boolean
+
+var userPreference;
+
+if (confirm("Would you like to enter a number?") == true) {
+    userPreference = "Data saved successfully!";
+} else {
+    userPreference = "Save Cancelled!";
+}
+var userPreference = prompt("Please enter preferred tenure in years", "15");
+
+if (userPreference != null) {
+    alert("You have entered " + tenure + " years" );
+}
+
+
+
+
