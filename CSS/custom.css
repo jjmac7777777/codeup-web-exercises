@@ -1,0 +1,19 @@
+.jumbotron-fluid {
+    background-image: image(img/pizza.png);
+}
+
+h1 {
+    text-align: center;
+}
+
+/*.navbar {*/
+/*    margin-left: auto;*/
+/*}*/
+
+.navbar-nav {
+    margin-left: fill;
+}
+
+/*.nav-item {*/
+/*     justify-items: left;*/
+/* }*/
