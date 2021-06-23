@@ -1,0 +1,32 @@
+body {
+    height: 100vh;
+}
+
+/* row color */
+div.row {
+    border: 1px dashed blue;
+}
+
+/* cell color */
+div.row > div {
+    border: 1px solid red;
+}
+
+div.tall-row {
+    height: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+hr {
+    position: relative;
+    top: 20px;
+    background-color: darkolivegreen;
+    color: darkolivegreen;
+    border-color: darkolivegreen;
+
+}
+
+
