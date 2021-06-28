@@ -22,12 +22,9 @@ function sayHello(name) {
  */
 
 var name = "Winterfell";
-var helloMessage = sayHello("Jack");
+var helloMessage = sayHello(name);
 
 console.log(helloMessage);
-alert(message);
-
-
 
 /**
  * TODO:
@@ -36,30 +33,23 @@ alert(message);
  * console.
  */
 
-function isTwo {
-}
-    var random = Math.floor((Math.random() * 3) + 1);
-
+var myName = "Winterfell";
+console.log(sayHello(myName));
 
 /**TODO:
  * Create a function called 'isTwo' that takes a number as a parameter.
  * The function should return a boolean value based on whether or not the passed
  * number is the number 2.
  **/
-
-    isTwo(1) // returns false
-    isTwo(2) // returns true
-    isTwo(3) // returns false
-
- *
- * Call the function 'isTwo' passing the variable 'random' as a argument.
- *
- * console.log *outside of the function* to check your work (you should see a
- * different result everytime you refresh the page if you are using the random
- * number)
+function isTwo(number) {
+    return number;
+}
+console.log(isTwo(1));
+console.log(isTwo(2));
+console.log(isTwo(3));
 
 
-/**
+    /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
  * restaurant. The function should accept a tip percentage and the total of the
@@ -71,12 +61,29 @@ function isTwo {
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 
+function calculateTip(tipPercentage, totalBill) {
+        let amountOfTip = (tipPercentage * totalBill);
+    return (amountOfTip);
+    }
+console.log(calculateTip(.20 , 25).toFixed(2));
+console.log(calculateTip(.15 , 30).toFixed(2));
+console.log(calculateTip(.18 , 50).toFixed(2));
+
 /**
  * TODO:
  * Use prompt and alert in combination with your calculateTip function to
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+
+var totalBill = 20;
+var tipPercentage = 0.20;
+
+totalBill = prompt("Enter the total bill");
+tipPercentage = prompt("Enter the tip percentage");
+alert("The tip should be " + calculateTip(tipPercentage,totalBill).toFixed(2));
+
+
 
 /**
  * TODO:
@@ -92,3 +99,8 @@ function isTwo {
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(originalPrice, discountPercent) {
+    return price - (price * discountPercent);
+}
+console.log(applyDiscount(100, 0.15));

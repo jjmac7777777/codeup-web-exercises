@@ -1,7 +1,5 @@
 "use strict";
 
-/* ########################################################################## */
-
 /**
  * TODO:
  * Create a function named `analyzeColor` that accepts a string that is a color
@@ -21,22 +19,26 @@
  */
 
 function analyzeColor(colorName) {
-
     if (colorName === "blue") {
         return "blue is the color of the sky";
     }
-    if (colorName === "red") {
+    else if (colorName === "red") {
         return "Strawberries are red";
-
-    } else if (colorName === "cyan") {
-        return " I don't know anything about cyan";
     }
-
-        return " I don't know anything about  " + colorName;
+    else if (colorName === "cyan") {
+        return "I don't know anything about cyan";
+    }
+    else {
+        return "I don't know anything about your color! " + colorName;
+    }
 }
 
-console.log(analyzeColor('blue'));
 
+
+// alert (analyzeColor("blue"));
+// alert (analyzeColor("red"));
+// alert (analyzeColor("cyan"));
+// alert (analyzeColor("green"));
 
 // Don't change the next two lines!
 // These lines create two variables for you:
@@ -51,10 +53,27 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message every time you refresh the page
  */
 
+console.log(analyzeColor(randomColor));
+
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+
+function analyzeColor(colorName) {
+    switch (colorName) {
+        case "blue":
+            return "blue is the color of the sky";
+        case "red":
+            return "Strawberries are red";
+        case "cyan":
+            return "I don't know anything about cyan";
+        default:
+            return "I don't know anything about your color! " + colorName;
+    }
+}
+
+console.log(analyzeColor(randomColor));
 
 /**
  * TODO:
@@ -62,6 +81,9 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+let inputColor = prompt("Enter a color");
+alert(analyzeColor(inputColor));
 
 /* ########################################################################## */
 
@@ -85,7 +107,25 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
+function calculateTotal(luckyNumber, totalAmount) {
+    switch (luckyNumber) {
+        case 1:
+            return totalAmount - (totalAmount * .10);
+        case 2:
+            return totalAmount - (totalAmount * .25);
+        case 3:
+            return totalAmount - (totalAmount * .50);
+        default:
+            return 0;
+    }
+}
+
+console.log(calculateTotal(1, 100));
+console.log(calculateTotal(2, 100));
+console.log(calculateTotal(3, 100));
+
 /**
+ *
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
  * Prompt the user for their total bill, then use your `calculateTotal` function
@@ -93,7 +133,13 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+let luckyNumber = Math.floor(Math.random() * 6);
+
+let totalBill = prompt("What is your total bill?");
+alert("Your lucky number is " + luckyNumber);
+alert("Your price before the discount is " + totalBill);
+alert("Your total bill is " + calculateTotal(luckyNumber, totalBill));
+
 
 /**
  * TODO:
@@ -112,24 +158,23 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * HINT: The way we prompt for a value could be improved
  */
 
-
-alert("This is alert box!");  // display string message
-alert(100); // display number
-alert(true); // display boolean
-
-var userPreference;
-
-if (confirm("Would you like to enter a number?") == true) {
-    userPreference = "Data saved successfully!";
-} else {
-    userPreference = "Save Cancelled!";
+let reply = confirm("Would you like to enter a number?");
+if (reply) {
+    let number = prompt("Enter a number");
+    if (isNaN(number)) {
+        alert("You didn't enter a number")
+    } else {
+        number = parseFloat(number);
+        if (number % 2 === 0) {
+            alert("Your number is even");
+        } else {
+            alert("Your number is odd");
+        }
+        alert("100 + your number is :" + Number(number+100));
+        if (number < 0) {
+            alert("Your number is negative");
+        } else {
+            alert("Your number is positive");
+        }
+    }
 }
-var userPreference = prompt("Please enter preferred tenure in years", "15");
-
-if (userPreference != null) {
-    alert("You have entered " + tenure + " years" );
-}
-
-
-
-
