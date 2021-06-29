@@ -92,33 +92,33 @@
      */
 
     let books = [
-        {   title: "The Salmon of Doubt", author: { firstName: "Douglas", lastName: "Adams" }},
+        {   title: "David Copperfield", author: { firstName: "Charles", lastName: "Dickens" }},
         {
-            title: "Kitty and the Midnight Hour",
+            title: "David Copperfield",
             author: {
-                firstName: "Carrie",
-                lastName: "Vaughn"
+                firstName: "Charles",
+                lastName: "Dickens"
             }
         },
         {
             author: {
-                firstName: "Ann",
-                lastName: "McCaffery",
-                title: "Dragonriders of Pern",
+                firstName: "Oscar",
+                lastName: "Wilde",
+                title: "The Picture of Dorian Gray"
             }
         },
         {
-            title: "Kitty goes to Washington",
+            title: "The Time Machine",
             author: {
-                firstName: "Carrie",
-                lastName: "Vaughn"
+                firstName: "H.G.",
+                lastName: "Wells"
             }
         },
         {
-            title: "How to Train Beagles",
+            title: "The Lord of the Rings",
             author: {
-                firstName: "Kathleen",
-                lastName: "Weaver"
+                firstName: "J.R.R.",
+                lastName: "Tolkein"
             }
         }
     ];
