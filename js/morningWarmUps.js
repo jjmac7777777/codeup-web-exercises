@@ -2,11 +2,11 @@
 //  returns the total number of spaces in the string.
 
 function countSpaces(str) {
-    if typeof str !== 'string'{
+    if (typeof str !== ('string')){
         return false;
     }
     else {
-        return count countSpaces(total number of Spaces in the string);
+        return countSpaces;
     }
 
     let my_string = "total number of Spaces in the string";
