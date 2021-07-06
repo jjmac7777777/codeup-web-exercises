@@ -34,10 +34,10 @@ console.log(countSpaces("Total number of spaces in the United States of America"
 //  returns the array with all of its elements capitalized.
 // Example:  capitalizeAllNames(["bob","Seth","TOFU","Toyota"]) ---- returns ----> ["BOB","SETH","TOFU","TOYOTA"]
 
-function capitalizeAllNames = ["bob","Seth","TOFU","Toyota"]; {
+const capitalizeAllNames ["bob","Seth","TOFU","Toyota"];
 
     let capitalizeAllNames = names.map(name => name.toUpperCase());
-}
+
 
 console.log(capitalizeAllNames("bob","Seth","TOFU","Toyota"));
 
