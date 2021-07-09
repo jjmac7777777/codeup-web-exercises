@@ -20,17 +20,22 @@
 // // // Should return the following
 // // ["1994-12-21","2016-02-13","2005-11-29"]
 
-function removeDuplicates(arrayOfStrings) {
-    return arrayOfStrings;
+// function removeDuplicates(arrayOfStrings){
+//     var uniqueStrings = [];
+//     for (let i = 0; i < arrayOfStrings.length; i++) {
+//         if (uniqueStrings.includes(arrayOfStrings[i])){
+//         }else{
+//             uniqueStrings.push(arrayOfStrings[i])
+//         }
+//     }
+//     return uniqueStrings;
+// }
+// console.log(removeDuplicates(["bob", "squid", "samantha", "bob"]));
 
-
-}
-const array = [1,1,2,3,3,4,4,5,5];
-const set = new Set(array);
-const uniqueArray = [...set];
-console.log(uniqueArray);
-const unique = [...new Set(array)];
-
+// const array = ["bob", "squid", "samantha", "bob"];
+// const set = new Set(array);
+// const uniqueArray = [...set];
+// console.log(uniqueArray);
 
 // 2. Create a function called max that accepts an array of numbers and returns the largest number from that array.
 //     Examples
@@ -45,8 +50,30 @@ const unique = [...new Set(array)];
 // max([54.5,2,34,-93]);
 // // Should return the following
 // 54.5
+
+// function max(input){
+//     if(toString.call(input) !== "[object Array]")
+//         return false;
+//     return Math.max.apply(null, input);
+// }
 //
+// console.log(max([4,34,193,2,345,46,0]));
+// console.log(max([-34,83,21,38,-2039,3.2]));
+// console.log(max([54.5,2,34,-93]));
+
+var arr = [4,34,193,2,345,46,0];
+var largest = arr[0];
+
+for (var i = 0; i < arr.length; i++) {
+    if (largest < arr[i] ) {
+        largest = arr[i];
+    }
+}
+console.log(largest);
+// //
 //
+
+
 // 3.Create a function called mostOccuringNumber that accepts an array of numbers and returns
 // the number that occurs the most within that array.
 //

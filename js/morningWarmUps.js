@@ -117,3 +117,35 @@ let splitStringArray = returnSplitString(array[0]);
 // ---- returns ----> [{firstName: "silvia", lastName: "floopertan", ageInYears: 34, heightInInches: 65},
 //
 
+function getTallUsers(arrayOfObjects){
+    var people = [personOne,personTwo,personThree];
+
+}
+
+var personOne = {
+//     firstName: "silvia",
+//     lastName: "floopertan",
+//     ageInYears: 34,
+//     heightInInches: 65,
+//     getFullName : function() {
+//         return this.firstName + " " + this.lastName;
+//     }
+// };
+
+    var personTwo = {
+//     firstName: "dan",
+//     lastName: "valdarez",
+//     ageInYears: 61,
+//     heightInInches: 73
+// }
+        var personThree = {
+//     firstName: "arlene",
+//     lastName: "martinez",
+//     ageInYears: 25,
+//     heightInInches: 62
+// }
+
+//
+personOne`${person} is ${height} inches tall`;
+personTwo`${person} is ${height} inches tall`;
+personThree`${person} is ${height} inches tall`;
