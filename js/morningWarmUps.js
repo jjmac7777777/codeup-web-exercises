@@ -132,7 +132,7 @@ var personOne = {
 //     }
 // };
 
-    var personTwo = {
+        var personTwo = {
 //     firstName: "dan",
 //     lastName: "valdarez",
 //     ageInYears: 61,
