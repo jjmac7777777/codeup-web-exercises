@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mapbox_maps_api</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+<div id='map' style='width: 90vw; height: 90vw;'></div>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<script>
+    // mapboxgl.accessToken = mapboxAPIKEY;
+    // let map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    //     center: [-75.165222, 39.952583], // starting position [lng, lat]
+    //     zoom: 5 // starting zoom...
+    // });
+
+    // mapboxgl.accessToken = mapboxAPIKEY;
+    // let map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    //     center: [-75.165222, 39.952583], // starting position [lng, lat]
+    //     zoom: 10 // new zoom...
+    // });
+
+    // mapboxgl.accessToken = mapboxAPIKEY;
+    // let map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    //     center: [-75.165222, 39.952583], // starting position [lng, lat]
+    //     zoom: 20 // another zoom...lost target :(
+    // });
+
+    mapboxgl.accessToken = mapboxAPIKEY;
+    let map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-75.165222, 39.952583], // starting position [lng, lat]
+        zoom: 11 // another zoom...regained target! :)
+    });
+
+
+        var marker = new mapboxgl.Marker()
+            .setLngLat([-75.159235,39.933191])
+            .addTo(map);
+
+        var popup = new mapboxgl.Popup()
+            .setLngLat([-75.159235,39.933191])
+            .setHTML("<p>PAT's...the KING of STEAKS</p>")
+            .addTo(map)
+
+    marker.setPopup(popup)
+
+    var locationToSearchFor = "1237 E Passyunk Ave, Philadelphia, PA 19147"
+
+    geocode(locationToSearchFor,mapboxAPIKey).then(function(alamoCoordinates) {
+        console.log(`Here are the coordinates for the following location ${-75.159235, 39.933191}`)
+        console.log("PATs Coords")
+
+        var patsMarker = new mapboxgl.Marker()
+            .setLngLat(patsMarker)
+            .addTo(map);
+
+        // map.on('click', 'places', function (e) {
+        //     var coordinates = e.features[0].geometry.coordinates.slice();
+        //     var description = e.features[0].properties.description;
+
+        var patsPopup = new mapboxgl.Popup()
+            .setLngLat([-75.159235, 39.933191])
+            .setHTML("<p>PATs</p>")
+            .setMaxWidth("100px")
+            .addTo(map)
+
+        patsMarker.setPopup(patsPopup)
+    });
+
+
+
+    });
+</script>
+</body>
+</html>

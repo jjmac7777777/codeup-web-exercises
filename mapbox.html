@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+<div id='map' style='width: 90vw; height: 90vw;'></div>
+<script src="js/keys.js"></script>
+<script>
+    mapboxgl.accessToken = mapboxAPIKEY;
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-75.165222, 39.952583], // starting position [lng, lat]
+        zoom: 5 // starting zoom
+
+        // var marker = new mapboxgl.Marker()
+        //     .setLngLat([-98.4916, 29.4260])
+        //     .addTo(map);
+
+        // var popup = new mapboxgl.Popup()
+        //     .setLngLat([-98.489615, 29.426827])
+        //     .setHTML("<p>Codeup Rocks!</p>")
+        //     .addTo(map)
+
+        // Zoom levels range from 0 up to 24, with 0 being a global view
+        // and 24 being the most detailed at street level
+
+        // For example, to change the zoom level, including map.setZoom(4)
+        // after the map variable is created would change the zoom level to show most of the US.
+
+        // To place a marker on a map, a marker object must be created. The methods .setLngLat() and
+        // .addTo() must be called on this marker object to set the position of the marker and add it to the map.
+        // The former method takes in the longitude and latitude
+        // coordinates for the marker while the latter takes in whatever variable refers to the map object.
+
+        // var marker = new mapboxgl.Marker()
+        //     .setLngLat([-98.4916, 29.4260])
+        //     .addTo(map);
+
+
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>
