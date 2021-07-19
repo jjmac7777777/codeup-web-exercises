@@ -59,7 +59,7 @@
 
     var locationToSearchFor = "1237 E Passyunk Ave, Philadelphia, PA 19147"
 
-    geocode(locationToSearchFor,mapboxAPIKey).then(function(alamoCoordinates) {
+    geocode(locationToSearchFor,mapboxAPIKey).then(function(coordinates) {
         console.log(`Here are the coordinates for the following location ${-75.159235, 39.933191}`)
         console.log("PATs Coords")
 
@@ -67,9 +67,9 @@
             .setLngLat(patsMarker)
             .addTo(map);
 
-        // map.on('click', 'places', function (e) {
-        //     var coordinates = e.features[0].geometry.coordinates.slice();
-        //     var description = e.features[0].properties.description;
+        map.on('click', 'places', function (e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.description;
 
         var patsPopup = new mapboxgl.Popup()
             .setLngLat([-75.159235, 39.933191])
@@ -78,11 +78,9 @@
             .addTo(map)
 
         patsMarker.setPopup(patsPopup)
-    });
+    })
 
-
-
-    });
+});
 </script>
 </body>
 </html>
