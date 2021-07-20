@@ -78,7 +78,7 @@
 </div>
 </div>
 <div class="justify-content-center">
-    <div id='map'  style='width: 100vw; height: 100vh'></div>
+    <div id='map'  style='width: 95vw; height: 95vh'></div>
 </div>
 <script src="./js/keys.js"></script>
 <script src="./js/jquery.js"></script>
@@ -86,6 +86,45 @@
 <script>
     'use strict'
 $(document).ready(function() {
+
+//     var marker = new mapboxgl.Marker()
+//         .setLngLat([-75.159235, 39.933191])
+//         .addTo(map);
+//
+//     var popup = new mapboxgl.Popup()
+//         .setLngLat([-75.159235, 39.933191])
+//         .setHTML("<p>PAT's...the KING of STEAKS</p>")
+//         .addTo(map)
+//
+//     marker.setPopup(popup)
+//
+//     var locationToSearchFor = "1237 E Passyunk Ave, Philadelphia, PA 19147"
+//
+//     geocode(locationToSearchFor, mapboxAPIKEY).then(function (coordinates) {
+//         console.log(`Here are the coordinates for the following location ${-75.159235, 39.933191}`)
+//         console.log("PATs Coords")
+//
+//         var patsMarker = new mapboxgl.Marker()
+//             .setLngLat(patsMarker)
+//             .addTo(map);
+//
+//         map.on('click', 'places', function (e) {
+//             var coordinates = e.features[0].geometry.coordinates.slice();
+//             var description = e.features[0].properties.description;
+//
+//             var patsPopup = new mapboxgl.Popup()
+//                 .setLngLat([-75.159235, 39.933191])
+//                 .setHTML("<p>PATs</p>")
+//                 .setMaxWidth("100px")
+//                 .addTo(map)
+//
+//             patsMarker.setPopup(patsPopup)
+//         })
+//
+//     });
+//
+// });
+
     mapboxgl.accessToken = mapboxAPIKEY;
     var map = new mapboxgl.Map({
         container: 'map',
@@ -102,6 +141,14 @@ $(document).ready(function() {
             units: "imperial"
         }).done(function (weatherData) {
             console.log('5 day forecast', weatherData );
+
+    // geocode(locationToSearchFor, mapboxAPIKEY).then(function (coordinates) {
+    //         console.log(`Here are the coordinates for the following location ${-75.159235, 39.933191}`)
+    //         console.log("PATs Coords")
+    //
+    //         var patsMarker = new mapboxgl.Marker()
+    //             .setLngLat(patsMarker)
+    //             .addTo(map);
 
             $("#weatherCard").html("")
 
@@ -124,13 +171,20 @@ $(document).ready(function() {
                     <p class="card-text">Humidity  ${day.humidity}</p>
                   </div>
                 </div>`
-                // console.log(dailyWether)
+                // console.log(dailyWeather)
                 $("#weatherCard").append(dailyWeather)
                 // console.log(day.temp.max)
-            })
-        });
-    }
-    })
+                function onDragEnd() {
+                    var lngLat = marker.getLngLat();
+                    map.setCenter([lngLat.lng, lngLat.lat])
+                    map.setZoom(5)
+                    // coordinates.style.display = 'block';
+                    // coordinates.innerHTML =
+                    //     'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+                    getWeatherInfo(lngLat.lng, lngLat.lat)
+                    console.log(lngLat)
+                });
+
 </script>
 </body>
 </html>
