@@ -11,6 +11,7 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet'/>
 </head>
 <body>
+<pre id="coordinates" class="coordinates"></pre>
 <nav class="navbar navbar-dark bg-primary">
     <h4 id="text">Weather App</h4>
     <h4 id="text2">Current City</h4>
@@ -19,9 +20,9 @@
 <form class="form-inline">
     <div class="form-group mb-2">
         <p>Place</p>
-        <input type="password" class="form-control" id="location" placeholder="location">
+        <input type="text" class="form-control" id="location" placeholder="location">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Find</button>
+    <button type="submit" id="button" class="btn btn-primary mb-2">Find</button>
 </form>
 <br>
 <div id="weatherCard" class="d-flex justify-content-around">
@@ -29,7 +30,7 @@
         <div class="card-body">
             <h5 class="card-title">Current Local Weather</h5>
         </div>
-        <!--        <img src="..." class="card-img-top" alt="...">-->
+        <img className="img-fluid" src={day.weather[0].icon}>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">An item</li>
             <li class="list-group-item">A second item</li>
@@ -78,113 +79,85 @@
 </div>
 </div>
 <div class="justify-content-center">
-    <div id='map'  style='width: 95vw; height: 95vh'></div>
+    <div id='map'  style='width: 100vw; height: 100vh'></div>
 </div>
 <script src="./js/keys.js"></script>
-<script src="./js/jquery.js"></script>
+<script src="./js/jquery_2.2.4.js"></script>
 
+<script src="./js/mapbox-geocoder-utils.js"></script>
 <script>
     'use strict'
-$(document).ready(function() {
-
-//     var marker = new mapboxgl.Marker()
-//         .setLngLat([-75.159235, 39.933191])
-//         .addTo(map);
-//
-//     var popup = new mapboxgl.Popup()
-//         .setLngLat([-75.159235, 39.933191])
-//         .setHTML("<p>PAT's...the KING of STEAKS</p>")
-//         .addTo(map)
-//
-//     marker.setPopup(popup)
-//
-//     var locationToSearchFor = "1237 E Passyunk Ave, Philadelphia, PA 19147"
-//
-//     geocode(locationToSearchFor, mapboxAPIKEY).then(function (coordinates) {
-//         console.log(`Here are the coordinates for the following location ${-75.159235, 39.933191}`)
-//         console.log("PATs Coords")
-//
-//         var patsMarker = new mapboxgl.Marker()
-//             .setLngLat(patsMarker)
-//             .addTo(map);
-//
-//         map.on('click', 'places', function (e) {
-//             var coordinates = e.features[0].geometry.coordinates.slice();
-//             var description = e.features[0].properties.description;
-//
-//             var patsPopup = new mapboxgl.Popup()
-//                 .setLngLat([-75.159235, 39.933191])
-//                 .setHTML("<p>PATs</p>")
-//                 .setMaxWidth("100px")
-//                 .addTo(map)
-//
-//             patsMarker.setPopup(patsPopup)
-//         })
-//
-//     });
-//
-// });
-
-    mapboxgl.accessToken = mapboxAPIKEY;
-    var map = new mapboxgl.Map({
-        container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 5,
+    $(document).ready(function() {
+        mapboxgl.accessToken = mapboxAPIKEY;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 5,
             center: [-98.58941, 29.47114]
-});
-    getWeatherInfo(-98.58941, 29.47114);
-    function getWeatherInfo(myLong, myLat) {
-        $.get("https://api.openweathermap.org/data/2.5/onecall", {
-            appid: wxbxAPIKEY,
-            lat: myLat,
-            lon: myLong,
-            units: "imperial"
-        }).done(function (weatherData) {
-            console.log('5 day forecast', weatherData );
-
-    // geocode(locationToSearchFor, mapboxAPIKEY).then(function (coordinates) {
-    //         console.log(`Here are the coordinates for the following location ${-75.159235, 39.933191}`)
-    //         console.log("PATs Coords")
-    //
-    //         var patsMarker = new mapboxgl.Marker()
-    //             .setLngLat(patsMarker)
-    //             .addTo(map);
-
-            $("#weatherCard").html("")
-
-            weatherData.daily.forEach(function (day) {
-                const unixTime = day.dt;
-                const date = new Date (unixTime*1000);
-                var dateString = date.toLocaleString("en-US")
-                console.log(date.toLocaleString("en-US"));
-                var iconcode= day.weather[0].icon;
-                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-
-                var dailyWeather =
-                    `<div class="card" style="width: 18rem;">
+        });
+        var marker = new mapboxgl.Marker({
+            draggable: true
+        })
+            .setLngLat([-75.159235, 39.933191])
+            .addTo(map);
+        getWeatherInfo(-75.159235, 39.933191);
+        function getWeatherInfo(myLong, myLat) {
+            $.get("https://api.openweathermap.org/data/2.5/onecall", {
+                appid: wxbxAPIKEY,
+                lat: myLat,
+                lon: myLong,
+                units: "imperial"
+            }).done(function (weatherData) {
+                console.log('5 day forecast', weatherData);
+                $("#weatherCard").html("")
+                weatherData.daily.forEach(function (day) {
+                    const unixTime = day.dt;
+                    const date = new Date(unixTime * 1000);
+                    var dateString = date.toLocaleDateString("en-US")
+                    console.log(date.toLocaleDateString("en-US"));
+                    var iconcode = day.weather[0].icon;
+                    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                    var dailyWeather =
+                        `<div class="card" style="width: 18rem;">
                   <div class="card-body">
-                    <h5 class="card-title">Today's Weather</h5>
-                    <p>${dateString}</p>
+                    <h5 class="card-title">Todays Weather</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Temperature: ${day.temp.day}</h6>
-                     <img src="${iconurl}">
+                    <img src="${iconurl}"/>
                     <p class="card-text">${day.weather[0].description}</p>
                     <p class="card-text">Humidity  ${day.humidity}</p>
                   </div>
                 </div>`
-                // console.log(dailyWeather)
-                $("#weatherCard").append(dailyWeather)
-                // console.log(day.temp.max)
-                function onDragEnd() {
-                    var lngLat = marker.getLngLat();
-                    map.setCenter([lngLat.lng, lngLat.lat])
-                    map.setZoom(5)
-                    // coordinates.style.display = 'block';
-                    // coordinates.innerHTML =
-                    //     'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-                    getWeatherInfo(lngLat.lng, lngLat.lat)
-                    console.log(lngLat)
-                });
-
+                    // console.log(dailyWether)
+                    $("#weatherCard").append(dailyWeather)
+                    // console.log(day.temp.max)
+                })
+            });
+        }
+        function onDragEnd() {
+            var lngLat = marker.getLngLat();
+            map.setCenter([lngLat.lng, lngLat.lat])
+            map.setZoom(5)
+            // coordinates.style.display = 'block';
+            // coordinates.innerHTML =
+            //     'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+            getWeatherInfo(lngLat.lng, lngLat.lat)
+            console.log(lngLat)
+        }
+        marker.on('dragend', onDragEnd);
+        $('#button').click(function (event) {
+            event.preventDefault();
+            var searchBar = $('input').val();
+            console.log(searchBar);
+            geocode(searchBar, mapboxAPIKEY).then(function (cityCoordinates) {
+                console.log(cityCoordinates)
+                map.setCenter(cityCoordinates)
+                marker.setLngLat(cityCoordinates)
+                getWeatherInfo(cityCoordinates[0],cityCoordinates[1]);
+            });
+            // var submit = document.querySelector('#button');
+            // submit.addEventListener('input', );
+        })
+    })
 </script>
 </body>
 </html>
