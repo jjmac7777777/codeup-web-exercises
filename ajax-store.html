@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Store</title>
+</head>
+<body>
+
+<h1>AJAX Store</h1>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Categories</th>
+    </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<button id="refresh">Reload Tool Data</button>
+
+<script src="./js/jquery.js"></script>
+
+<script>
+    (function() {
+        "use strict";
+
+        getData();
+
+        function getData() {
+
+            $.ajax("data/inventory.json").done(function (data) {
+                // console.log(data);
+                var html = "";
+                $('#insertProducts').empty();
+                data.forEach(function (tool) {
+                    // console.log(tool);
+                    html = `<tr>
+                            <td>${tool.title}</td>
+                            <td>${tool.quantity}</td>
+                            <td>${tool.price}</td>
+                            <td>${tool.categories}</td>
+                        </tr>`;
+
+                    $('#insertProducts').append(html);
+                })
+
+            }).fail(function (error) {
+                console.log("Error object: " + error);
+            })
+        }
+
+        setInterval(getData, 3000);
+
+        $('#refresh').click(getData);
+
+
+    })();
+</script>
+
+</body>
+</html>

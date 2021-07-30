@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>KONAMI CODE</title>
+    <link rel="stylesheet" href="css/konami.css">
 </head>
 <body>
 
@@ -21,12 +22,12 @@
 
         function keyPressEventHandler(event){
 
-            allKeysPress += event.key;         // "bArrowUpArrowDownArrowLeftArrowRightTab"
+            allKeysPress += event.key;
             var didKeySeq = (allKeysPress.includes("ArrowUpArrowDownArrowLeftArrowRight"));
             console.log(allKeysPress)
             if (didKeySeq){
                 allKeysPress = "";
-                alert("I love castlevania");
+                alert("What???");
             }
 
         }

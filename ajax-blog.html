@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+<h1>AJAX BLOG</h1>
+<div id="posts"></div>
+<script src="./js/jquery.js" ></script>
+<script>
+    (function() {
+        "use strict";
+
+
+        $.ajax("data/blog.json").done(function(data) {
+            console.log(data);
+            var html = '';
+
+            data.forEach(function (post) {
+                var categoryString = post.categories.join(", ")
+                html = `<div>
+                            <h3>${post.title}</h3>
+                            <h5>${post.date}</h5>
+                            <p>${post.content}</p>
+                            <p>${categoryString}</p>
+                        </div>`;
+
+                $('#posts').append(html);
+            })
+
+
+        }).fail(function(error) {
+            console.log("Error object: " + error);
+        });
+
+
+
+
+    })();
+</script>
+</body>
+</html>
