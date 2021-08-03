@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>A FAQ with FACTS...don't fax!</title>
     <link rel="stylesheet" href="css/jquery_faq.css">
 </head>
 <body>
-<button id="button">Click to toggle the highlighting of important text.</button>
-<p>National Park FAQ:</p>
+
+<button class="toggler">Facts and more facts...</button>
+
+
+<p><strong><em>National Park Frequently Asked Questions</em></strong></p>
 <dl>
     <dt>How do I apply for a job with the National Park Service?</dt>
     <dd>National Park Service jobs, including both permanent and seasonal positions, are listed on USAJOBs.
@@ -64,6 +67,8 @@
     <hr>
 </dl>
 
+
+
 <h3 id="arches">Arches</h3>
 <ul id="arches-facts" class="facts">
     <li>In 1929 President Herbert Hoover created Arches National Monument, then in 1971 Congress designated Arches as a National Park under the Nixon administration.</li>
@@ -86,7 +91,37 @@
     <li>More than 550,000 acres of Joshua Tree National Park’s nearly 800,000 acres are designated as wilderness.</li>
 </ul>
 
-})
+
+<button id="highlighter">What are the last facts?</button>
+
+
 <script src="./js/jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        $('dd').addClass('invisible');
+        $('.toggler').click(function () {
+            $('dd').toggleClass('invisible')
+        });
+        $('dt').click(function () {
+            $(this).css('background-color', 'yellow')
+        });
+
+
+        $('#highlighter').click(function () {
+            $('ul').each(function () {
+                $(this).children().last().css('background-color', 'orange');
+            });
+        });
+
+        $('h3').click(function () {
+            $(this).next().children().css('font-weight', 'bold');
+        });
+
+        $('li').click(function () {
+            $(this).parent().children().first().css('color', 'red');
+        });
+    });
+
+</script>
 </body>
 </html>

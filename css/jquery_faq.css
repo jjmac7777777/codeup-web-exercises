@@ -1,4 +1,17 @@
-.invisible{
+
+.invisible {
     visibility: hidden;
 }
+
+.photos {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.photo {
+    height: 300px;
+    width: 250px;
+
+}
+
 
