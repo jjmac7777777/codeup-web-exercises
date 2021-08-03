@@ -1,27 +1,45 @@
-"use strict";
-var Konami = Konami || {};
+var global = {
 
-Konami.key = '38384040373937396665';
+    konami: function() {
+        var konamikeys = [38,38,40,40,37,39,37,39,66,65],
+            started = false,
+            count = 0;
 
-Konami.onCode = function(callback) {
-    var input = '';
-    $(document).on("keydown", function(e) {
-        input += ("" + e.keyCode);
-        if (input === Konami.key) {
-            if(typeof callback == 'undefined') {
-                return alert("⬆⬆⬇⬇⬅➡⬅➡🅱🅰");
+        $(document).keydown(function(e){
+            var reset = function() {
+                started = false;
+                count = 0;
+                return;
+            };
+
+            key = e.keyCode;
+
+            // Begin watching if first key in sequence was pressed.
+            if(!started){
+                if(key == 38){
+                    started = true;
+                }
             }
-            else {
-                return callback();
+
+            // If we've started, pay attention to key presses, looking for right sequence.
+            if (started){
+
+                if (konamikeys[count] == key){
+                    count++;
+                } else {
+                    // Incorrect key, restart.
+                    reset();
+                }
+                if (count == 10){
+                    // Success!
+                    alert('Konami code entered! Do something cool here.');
+                    reset();
+                }
+            } else {
+                reset();
             }
-        }
-        if (!Konami.key.indexOf(input)) return;
-        input = ("" + e.keyCode);
-    });
+        });
+    }
 }
 
-Konami.offCode = function() {
-    $(document).off("keydown");
-}
-
-Konami.onCode();
+global.konami();
